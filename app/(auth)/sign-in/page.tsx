@@ -1,11 +1,8 @@
 import React from 'react';
+import { LoginForm } from '@/components/auth/LoginForm';
 
 const SingInPage = () => {
-  return (
-    <div>
-      <h1>Sign In</h1>
-    </div>
-  );
+  return <LoginForm />;
 };
 
 export default SingInPage;
