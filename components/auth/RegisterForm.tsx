@@ -33,7 +33,8 @@ export const RegisterForm = () => {
     },
   });
 
-  const { control, setError, clearErrors, formState, handleSubmit } = form;
+  const { control, setError, reset, clearErrors, formState, handleSubmit } =
+    form;
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     // clearErrors();
@@ -48,6 +49,8 @@ export const RegisterForm = () => {
 
       if ('success' in response) {
         setSuccess(response.success);
+        clearErrors();
+        reset();
       }
     });
   };
