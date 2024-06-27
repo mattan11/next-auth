@@ -40,14 +40,14 @@ export const LoginForm = () => {
 
     startTransition(async () => {
       const response = await login(values); // server action
-      if ('error' in response) {
+      if (response?.error) {
         setError('root', { type: 'manual', message: response.error });
         return;
       }
 
-      if ('success' in response) {
-        setSuccess(response.success);
-      }
+      // if ('success' in response) {
+      //   setSuccess(response.success);
+      // }
     });
   };
 
