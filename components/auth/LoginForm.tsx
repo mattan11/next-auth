@@ -51,9 +51,9 @@ export const LoginForm = () => {
         return;
       }
 
-      // if ('success' in response) {
-      //   setSuccess(response.success);
-      // }
+      if (response?.success) {
+        setSuccess(response.success);
+      }
     });
   };
 
