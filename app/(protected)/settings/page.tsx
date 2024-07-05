@@ -1,25 +1,24 @@
-import React from 'react';
-import { auth, signOut } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+'use client';
 
-const SettingsPage = async () => {
-  const session = await auth();
+import { logout } from '@/actions/logout';
+import { useCurrentUser } from '@/hooks/useCurrentuxer';
+
+const SettingsPage = () => {
+  const user = useCurrentUser();
+
+  const handleClick = async () => {
+    await logout();
+  };
 
   return (
-    <>
-      <div>{JSON.stringify(session, null, 2)}</div>
-      <form
-        action={async () => {
-          'use server';
-
-          await signOut({
-            redirectTo: '/sign-in',
-          }); // This method works only on the server side
-        }}
+    <div className="bg-white p-10 rounded-xl">
+      <button
+        onClick={handleClick}
+        type="submit"
       >
-        <button type="submit">Sign Out</button>
-      </form>
-    </>
+        Sign Out
+      </button>
+    </div>
   );
 };
 
