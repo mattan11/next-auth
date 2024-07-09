@@ -25,7 +25,10 @@ export default function Home() {
           Next.js applications.
         </p>
         <div>
-          <LoginButton>
+          <LoginButton
+            mode="modal"
+            asChild
+          >
             <Button
               size={'lg'}
               variant={'secondary'}
