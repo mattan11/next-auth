@@ -8,8 +8,8 @@ import UserButton from '@/components/auth/UserButton';
 export const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className="bg-secondary flex justify-between items-center p-4 rounded-xl w-4/5 shadow-sm">
-      <div className="flex gap-x-2">
+    <nav className="bg-secondary flex justify-between max-md:items-start md:items-center p-4 rounded-xl w-4/5 max-w-2xl shadow-sm">
+      <div className="flex flex-col md:flex-row max-md:gap-y-2  md:gap-x-2">
         <Button
           asChild
           variant={pathname === '/server' ? 'default' : 'outline'}

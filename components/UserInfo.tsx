@@ -22,7 +22,7 @@ const UserItem = ({ label, value }: { label: string; value: string }) => {
 
 const UserInfo = ({ user, label }: UserInfoProps) => {
   return (
-    <Card className="shadow-md w-4/5">
+    <Card className="shadow-md w-4/5 max-w-2xl">
       <CardHeader>
         <p className="text-2xl font-semibold text-center">{label}</p>
       </CardHeader>

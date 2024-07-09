@@ -1,24 +1,40 @@
 'use client';
 
-import { logout } from '@/actions/logout';
-import { useCurrentUser } from '@/hooks/useCurrentuxer';
+import { useTransition } from 'react';
+import { useSession } from 'next-auth/react';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { settings } from '@/actions/settings';
 
 const SettingsPage = () => {
-  const user = useCurrentUser();
+  const { update } = useSession();
+  const [isPending, startTransition] = useTransition();
 
   const handleClick = async () => {
-    await logout();
+    startTransition(async () => {
+      await settings({
+        name: 'John Doe',
+      });
+
+      await update();
+    });
   };
 
   return (
-    <div className="bg-white p-10 rounded-xl">
-      <button
-        onClick={handleClick}
-        type="submit"
-      >
-        Sign Out
-      </button>
-    </div>
+    <Card className="w-4/5 max-w-2xl">
+      <CardHeader>
+        <p className="text-2xl font-semibold text-center">Settings</p>
+      </CardHeader>
+      <CardContent>
+        <Button
+          disabled={isPending}
+          className="w-full"
+          onClick={handleClick}
+        >
+          {isPending ? 'Saving...' : 'Save'}
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
 

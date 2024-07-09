@@ -25,3 +25,8 @@ export const NewPasswordSchema = z.object({
     .trim()
     .min(2, { message: 'Minimum 2 characters required' }),
 });
+
+export const SettingsSchema = z.object({
+  name: z.optional(z.string().trim().min(1, { message: 'Name is required' })),
+  email: z.optional(z.string().trim().email()),
+});
