@@ -14,9 +14,11 @@ import { getTwoFactorTokenByEmail } from '@/data/twoFactorToken';
 import { db } from '@/lib/db';
 import { getTwoFactorConfirmationByUserId } from '@/data/twoFactorConfirmation';
 
-export const login = async (values: z.infer<typeof LoginSchema>) => {
+export const login = async (
+  values: z.infer<typeof LoginSchema>,
+  callbackUrl: string | null
+) => {
   const validatedFields = LoginSchema.safeParse(values);
-  const callbackUrl = '/settings';
 
   if (!validatedFields.success) {
     return { error: 'Invalid fields' };

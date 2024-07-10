@@ -26,6 +26,7 @@ export const LoginForm = () => {
   const [success, setSuccess] = React.useState<string | undefined>();
   const [showTwoFactor, setShowTwoFactor] = React.useState<boolean>(false);
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl');
   const urlError =
     searchParams.get('error') === 'OAuthAccountNotLinked'
       ? 'Email already in use with different Provider'
@@ -45,7 +46,7 @@ export const LoginForm = () => {
     // clearErrors();
     // setSuccess(undefined);
     try {
-      const response = await login(values); // server action
+      const response = await login(values, callbackUrl); // server action
       if (response?.error) {
         setError('root', { type: 'manual', message: response.error });
         return;
