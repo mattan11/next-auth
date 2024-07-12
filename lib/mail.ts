@@ -7,7 +7,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmLink = `${domain}/new-verification?token=${token}`;
 
   const response = await resend.emails.send({
-    from: 'mail@quencodell.pl',
+    from: 'verify@quencodell.pl',
     to: email,
     subject: 'Verify your email',
     // react: EmailTemplate({ firstName: confirmLink }),
@@ -21,7 +21,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
   const resetLink = `${domain}/new-password?token=${token}`;
 
   const response = await resend.emails.send({
-    from: 'mail@quencodell.pl',
+    from: 'verify@quencodell.pl',
     to: email,
     subject: 'Reset your password',
     // react: EmailTemplate({ firstName: confirmLink }),
@@ -33,7 +33,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   const response = await resend.emails.send({
-    from: 'mail@quencodell.pl',
+    from: 'verify@quencodell.pl',
     to: email,
     subject: '2FA code',
     // react: EmailTemplate({ firstName: confirmLink }),
